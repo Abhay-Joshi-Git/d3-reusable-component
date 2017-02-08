@@ -1,4 +1,4 @@
-import { baseChart } from './baseChartComponent';
+import { baseChart } from './baseChart';
 
 export var baseBarChart = function(config) {
 
