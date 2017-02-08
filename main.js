@@ -40,7 +40,7 @@ d3.tsv("data.tsv", function(error, data) {
 		},
 		y: {
 			scale: chart.scaleY(),
-			ticks: 10,
+			ticks: [10, '%'],
 			orientation: 'left'
 		},
 		innerArea: chart.innerArea(),
@@ -75,7 +75,7 @@ d3.tsv("data2.tsv", function(error, data) {
 		},
 		y: {
 			scale: chart1.scaleY(),
-			ticks: 10,
+			ticks: [10, '%'],
 			orientation: 'left'
 		},
 		innerArea: chart1.innerArea(),

@@ -43,7 +43,7 @@ export var baseAxis = function (configData) {
     function applyYAxis() {
         axisY = axisY
             .scale(y.scale)
-            .ticks(y.ticks)
+            .ticks(...y.ticks)
             .orient(y.orientation);
 
         innerArea.append('g')
