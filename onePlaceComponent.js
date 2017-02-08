@@ -37,15 +37,32 @@ var innerArea = svg.append('g')
         scaleY.domain(d3.extent(data, d => d.frequency));
         scaleX.domain(data.map(d => d.letter));
 
-        innerArea.selectAll('rect')
+        var rects = innerArea.selectAll('rect')
             .data(data)
             .enter()
-            .append('rect')
+            .append('rect');
+
+        rects
             .attr('x', d => scaleX(d.letter))
-            .attr('y', d => scaleY(d.frequency))
             .attr('width', scaleX.rangeBand()) //*** width depending on scale bands
-                    .attr('height', d => height - scaleY(d.frequency))
-            .style('fill', 'steelblue');
+            .style('fill', 'steelblue')
+            .attr("height", 0)
+            .attr('y', function (d, i) {
+				return height;
+			});
+
+        rects
+            .transition()
+            .duration(3050)
+            .delay(function (d, i) {
+				return i * 50;
+			})
+            .attr('y', function (d, i) {
+				return scaleY(d.frequency);
+			})
+			.attr('height', function (d, i) {
+				return height - scaleY(d.frequency);
+			});    
 
         innerArea.append('g')
             .attr('transform', 'translate(' + 0 + ',' + height + ')')
